@@ -4,30 +4,31 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 /**
- * Thumb-reachable CTAs on small screens — call and book first (larger tap targets).
+ * Thumb-reachable CTAs on small screens — Call Now is primary (tel:) for conversion.
+ * z-30 keeps the bar under the mobile menu overlay (z-40+).
  */
 export function MobileStickyActions() {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-gw-border bg-gw-white/98 px-4 py-3 shadow-[0_-6px_24px_rgba(15,31,28,0.1)] backdrop-blur-md md:hidden"
+      className="fixed inset-x-0 bottom-0 z-30 border-t border-gw-border bg-gw-white/98 px-4 py-3 shadow-[0_-10px_32px_rgba(15,31,28,0.14)] backdrop-blur-md md:hidden"
       style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
       role="navigation"
       aria-label="Quick actions"
     >
-      <div className="mx-auto flex max-w-lg gap-3">
+      <div className="mx-auto flex max-w-lg gap-3.5">
         <a
           href={site.phoneTel}
-          className="flex min-h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-gw-teal bg-gw-white text-sm font-bold text-gw-teal-dark transition hover:bg-gw-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal"
+          className="flex min-h-[3.5rem] min-w-0 flex-[1.25] items-center justify-center gap-2 rounded-xl bg-gw-teal px-3 text-base font-bold text-white shadow-md transition hover:bg-gw-teal-dark active:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark"
         >
           <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden />
-          Call now
+          Call Now
         </a>
         <Link
           href="/contact/"
-          className="flex min-h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-gw-teal px-2 text-sm font-bold text-white shadow-md transition hover:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark"
+          className="flex min-h-[3.5rem] min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-gw-teal bg-gw-white px-3 text-base font-bold text-gw-teal-dark transition hover:bg-gw-cream active:bg-gw-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal"
         >
           <CalendarIcon className="h-5 w-5 shrink-0" aria-hidden />
-          Book a visit
+          Book visit
         </Link>
       </div>
     </div>

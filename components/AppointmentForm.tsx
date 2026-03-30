@@ -120,7 +120,7 @@ export function AppointmentForm({
           </p>
           <button
             type="button"
-            className="mt-4 rounded-full border border-gw-border bg-gw-white px-4 py-2 text-sm font-semibold text-gw-teal-dark shadow-sm transition hover:bg-gw-cream"
+            className="mt-4 min-h-12 rounded-full border border-gw-border bg-gw-white px-5 py-3 text-sm font-semibold text-gw-teal-dark shadow-sm transition hover:bg-gw-cream active:bg-gw-cream sm:min-h-0 sm:py-2"
             onClick={() => setStatus("idle")}
           >
             Send another message
@@ -128,7 +128,7 @@ export function AppointmentForm({
         </div>
       ) : (
         <form
-          className="mt-6 space-y-4"
+          className="mt-6 space-y-5 sm:space-y-4"
           onSubmit={handleSubmit}
           aria-busy={status === "sending"}
         >
@@ -275,7 +275,7 @@ export function AppointmentForm({
           <button
             type="submit"
             disabled={status === "sending"}
-            className="w-full rounded-full bg-gw-teal px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-gw-teal-dark disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+            className="min-h-14 w-full rounded-full bg-gw-teal px-6 py-4 text-base font-bold text-white shadow-sm transition hover:bg-gw-teal-dark active:bg-gw-teal-dark disabled:cursor-not-allowed disabled:opacity-60 sm:min-h-12 sm:w-auto sm:py-3 sm:text-sm sm:font-semibold"
           >
             {status === "sending" ? (
               <span className="inline-flex items-center justify-center gap-2">
@@ -343,7 +343,7 @@ function Field({
           rows={4}
           autoComplete={autoComplete}
           aria-required={required}
-          className="mt-1 w-full rounded-lg border border-gw-border bg-gw-cream/40 px-3 py-2 text-gw-ink outline-none ring-gw-teal/30 focus:ring-2"
+          className="mt-1.5 min-h-12 w-full rounded-lg border border-gw-border bg-gw-cream/40 px-3 py-3 text-base text-gw-ink outline-none ring-gw-teal/30 focus:ring-2 sm:min-h-0 sm:py-2 sm:text-sm"
         />
       ) : (
         <input
@@ -354,7 +354,7 @@ function Field({
           autoComplete={autoComplete}
           inputMode={inputMode}
           aria-required={required}
-          className="mt-1 w-full rounded-lg border border-gw-border bg-gw-cream/40 px-3 py-2 text-gw-ink outline-none ring-gw-teal/30 focus:ring-2"
+          className="mt-1.5 min-h-12 w-full rounded-lg border border-gw-border bg-gw-cream/40 px-3 py-3 text-base text-gw-ink outline-none ring-gw-teal/30 focus:ring-2 sm:min-h-0 sm:py-2 sm:text-sm"
         />
       )}
     </div>

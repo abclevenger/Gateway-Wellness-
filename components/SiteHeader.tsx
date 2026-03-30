@@ -152,17 +152,17 @@ export function SiteHeader() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex items-center gap-2.5 lg:hidden">
           <a
             href={site.phoneTel}
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gw-border text-gw-teal transition hover:bg-gw-cream"
+            className="flex h-11 min-h-11 min-w-11 items-center justify-center rounded-full border border-gw-border text-gw-teal transition hover:bg-gw-cream active:bg-gw-cream"
             aria-label={`Call ${site.phone}`}
           >
             <PhoneGlyph className="h-5 w-5" />
           </a>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-gw-border text-gw-ink transition hover:bg-gw-cream"
+            className="flex h-11 min-h-11 min-w-11 items-center justify-center rounded-full border border-gw-border text-gw-ink transition hover:bg-gw-cream active:bg-gw-cream"
             aria-expanded={mobileOpen}
             aria-controls={mobileMenuId}
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -185,10 +185,10 @@ export function SiteHeader() {
             id={mobileMenuId}
             className="absolute left-0 right-0 top-full z-50 max-h-[min(78dvh,560px)] overflow-y-auto border-b border-gw-border bg-gw-white shadow-xl lg:hidden"
           >
-            <div className="mx-auto max-w-6xl space-y-1 px-4 py-4">
+            <div className="mx-auto max-w-6xl space-y-1 px-4 py-5 pb-[max(1.25rem,env(safe-area-inset-bottom))]">
               <Link
                 href="/"
-                className="block rounded-xl px-4 py-3 text-base font-medium text-gw-ink hover:bg-gw-cream"
+                className="block min-h-12 rounded-xl px-4 py-3.5 text-base font-medium leading-snug text-gw-ink hover:bg-gw-cream"
                 onClick={() => setMobileOpen(false)}
               >
                 Home
@@ -205,33 +205,33 @@ export function SiteHeader() {
 
               <Link
                 href="/contact/"
-                className="block rounded-xl px-4 py-3 text-base font-medium text-gw-ink hover:bg-gw-cream"
+                className="block min-h-12 rounded-xl px-4 py-3.5 text-base font-medium leading-snug text-gw-ink hover:bg-gw-cream"
                 onClick={() => setMobileOpen(false)}
               >
                 Contact
               </Link>
 
-              <div className="mt-4 grid gap-2 border-t border-gw-border pt-4">
+              <div className="mt-5 grid gap-3 border-t border-gw-border pt-5">
+                <a
+                  href={site.phoneTel}
+                  className="flex min-h-14 items-center justify-center rounded-xl bg-gw-teal px-4 text-center text-base font-bold text-white shadow-sm transition hover:bg-gw-teal-dark active:bg-gw-teal-dark"
+                >
+                  Call now — {site.phone}
+                </a>
                 <Link
                   href="/contact/"
-                  className="flex items-center justify-center rounded-xl bg-gw-teal py-3.5 text-center text-base font-semibold text-white"
+                  className="flex min-h-14 items-center justify-center rounded-xl border-2 border-gw-teal bg-gw-white px-4 text-center text-base font-bold text-gw-teal-dark transition hover:bg-gw-cream active:bg-gw-cream"
                   onClick={() => setMobileOpen(false)}
                 >
                   Book a visit
                 </Link>
                 <Link
                   href="/online-scheduling/"
-                  className="flex items-center justify-center rounded-xl border border-gw-border py-3.5 text-center text-base font-semibold text-gw-teal-dark"
+                  className="flex min-h-12 items-center justify-center rounded-xl border border-gw-border bg-gw-white px-4 text-center text-base font-semibold text-gw-teal-dark transition hover:bg-gw-cream"
                   onClick={() => setMobileOpen(false)}
                 >
                   Online scheduling
                 </Link>
-                <a
-                  href={site.phoneTel}
-                  className="flex items-center justify-center rounded-xl border border-gw-border py-3.5 text-center text-base font-semibold text-gw-teal"
-                >
-                  Call {site.phone}
-                </a>
               </div>
             </div>
           </div>
@@ -255,7 +255,7 @@ function MobileAccordion({
     <div className="rounded-xl border border-gw-border/80 bg-gw-cream/30">
       <button
         type="button"
-        className="flex w-full items-center justify-between px-4 py-3 text-left text-base font-medium text-gw-ink"
+        className="flex min-h-12 w-full items-center justify-between px-4 py-3.5 text-left text-base font-medium text-gw-ink"
         aria-expanded={expanded}
         onClick={() => setExpanded((v) => !v)}
       >
@@ -268,7 +268,7 @@ function MobileAccordion({
             <li key={item.href}>
               <Link
                 href={item.href}
-                className="block px-4 py-2.5 pl-6 text-sm text-gw-muted hover:bg-gw-cream hover:text-gw-ink"
+                className="block min-h-11 px-4 py-3 pl-6 text-base leading-snug text-gw-muted hover:bg-gw-cream hover:text-gw-ink"
                 onClick={onNavigate}
               >
                 {item.label}

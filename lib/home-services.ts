@@ -1,37 +1,32 @@
 /** Homepage priority services — links to existing service pages only. */
 export const homePriorityServices = [
   {
-    title: "Back pain",
-    description:
-      "Low-back and spine issues: exam, hands-on care, and rehab options on Land O' Lakes Blvd — without bouncing between offices.",
+    title: "Back Pain Relief",
+    description: "Fix chronic or sudden back pain with targeted rehab plans",
     learnHref: "/chiropractic-medicine/",
     bookHref: "/contact/",
   },
   {
-    title: "Neck pain & headaches",
-    description:
-      "Stiff neck, screen posture, tension headaches — we pair adjustment-friendly care with therapy when it helps.",
+    title: "Neck Pain Treatment",
+    description: "Relieve stiffness, tension, and injury-related pain",
     learnHref: "/chiropractic-medicine/",
     bookHref: "/contact/",
   },
   {
-    title: "Car accident injuries",
-    description:
-      "Whiplash, soreness after a crash, paperwork questions — coordinated visits so treatment stays on track.",
+    title: "Auto Accident Injury Care",
+    description: "Recover faster and document your case properly",
     learnHref: "/chiropractic-medicine/",
     bookHref: "/contact/",
   },
   {
-    title: "Physical therapy",
-    description:
-      "Licensed PT for strength, balance, and mobility after injury or surgery — same building as your chiro team.",
+    title: "Physical Therapy & Rehab",
+    description: "Restore strength, mobility, and function",
     learnHref: "/physical-therapy/",
     bookHref: "/contact/",
   },
   {
-    title: "Chiropractic",
-    description:
-      "Adjustments, thorough exam, on-site X-ray when it makes sense. Walk in off the street — no referral in FL.",
+    title: "Chiropractic Care",
+    description: "Improve alignment and reduce pressure on joints",
     learnHref: "/chiropractic-medicine/",
     bookHref: "/contact/",
   },

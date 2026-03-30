@@ -4,7 +4,7 @@ import { homeTrust } from "@/lib/home-trust";
 export function HomeTrustStrip() {
   return (
     <div className="border-t border-white/15 text-gw-cream">
-      <div className="mx-auto grid max-w-6xl gap-4 px-4 py-5 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:gap-6">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-5 px-4 py-6 sm:px-6 lg:grid-cols-4 lg:gap-6 lg:py-5">
         <TrustCell
           label={homeTrust.google.label}
           value={homeTrust.google.value}
@@ -14,13 +14,20 @@ export function HomeTrustStrip() {
         <TrustCell label={homeTrust.insurance.label} value={homeTrust.insurance.value} />
         <TrustCell label={homeTrust.team.label} value={homeTrust.team.value} />
       </div>
-      <div className="border-t border-white/10 px-4 py-4 sm:px-6">
-        <p className="mx-auto max-w-2xl text-center text-[11px] leading-snug text-gw-cream/70 sm:text-xs">
-          Eligible veterans: we see patients through{" "}
-          <span className="font-semibold text-gw-cream/90">VA Community Care</span> when your VA
-          referral authorizes care in the community.
+      <div className="border-t border-white/10 px-4 py-5 sm:px-6 sm:py-4">
+        <p className="mx-auto max-w-2xl text-center text-xs leading-relaxed text-gw-cream/75 sm:text-xs sm:leading-snug">
+          <span className="lg:hidden">
+            Veterans:{" "}
+            <span className="font-semibold text-gw-cream/95">VA Community Care</span> when your VA
+            authorizes community visits.
+          </span>
+          <span className="hidden lg:inline">
+            Eligible veterans: we see patients through{" "}
+            <span className="font-semibold text-gw-cream/90">VA Community Care</span> when your VA
+            referral authorizes care in the community.
+          </span>
         </p>
-        <VaCommunityCareBadge className="mx-auto mt-3 max-w-6xl" />
+        <VaCommunityCareBadge className="mx-auto mt-4 max-w-6xl sm:mt-3" />
       </div>
     </div>
   );
@@ -37,10 +44,14 @@ function TrustCell({
 }) {
   const inner = (
     <>
-      <p className="text-[11px] font-semibold uppercase tracking-wider text-gw-cream/60">
-        {label}
+      {label ? (
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-gw-cream/60">
+          {label}
+        </p>
+      ) : null}
+      <p className={label ? "mt-1 text-sm font-semibold leading-snug text-white" : "text-sm font-semibold leading-snug text-white"}>
+        {value}
       </p>
-      <p className="mt-1 text-sm font-semibold leading-snug text-white">{value}</p>
     </>
   );
 
@@ -50,12 +61,14 @@ function TrustCell({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="rounded-lg px-1 py-0.5 transition hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-accent"
+        className="-mx-0.5 block rounded-lg px-2 py-3 text-center transition hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-accent sm:mx-0 sm:px-3 sm:py-2.5 sm:text-left"
       >
         {inner}
       </a>
     );
   }
 
-  return <div className="rounded-lg px-1 py-0.5">{inner}</div>;
+  return (
+    <div className="rounded-lg px-2 py-3 text-center sm:px-1 sm:py-2 sm:text-left lg:px-2">{inner}</div>
+  );
 }
