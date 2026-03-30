@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { homeOffer } from "@/lib/home-offer";
 import { site } from "@/lib/site";
 
 /**
@@ -15,13 +16,22 @@ export function MobileStickyActions() {
       role="navigation"
       aria-label="Quick actions"
     >
+      <p className="mx-auto mb-2 max-w-lg text-center text-[0.6875rem] font-semibold leading-tight text-gw-teal-dark">
+        {homeOffer.heroNearCtaLineShort}
+      </p>
       <div className="mx-auto flex max-w-lg gap-3.5">
         <a
           href={site.phoneTel}
-          className="flex min-h-12 min-w-0 flex-[1.25] items-center justify-center gap-2 rounded-xl bg-gw-teal px-3 text-base font-bold text-white shadow-md transition hover:bg-gw-teal-dark active:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark"
+          aria-label="Call now for relief"
+          className="flex min-h-12 min-w-0 flex-[1.25] flex-col items-center justify-center gap-0 rounded-xl bg-gw-teal px-2 py-2 text-center text-sm font-bold leading-tight text-white shadow-md transition hover:bg-gw-teal-dark active:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark sm:flex-row sm:gap-2 sm:px-3 sm:text-base"
         >
-          <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden />
-          Call Now
+          <PhoneIcon className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" aria-hidden />
+          <span>
+            Call Now
+            <span className="block text-[0.65rem] font-semibold text-white/90 sm:inline sm:text-xs">
+              for relief
+            </span>
+          </span>
         </a>
         <Link
           href="/contact/"

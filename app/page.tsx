@@ -4,10 +4,13 @@ import Link from "next/link";
 import { AppointmentForm } from "@/components/AppointmentForm";
 import { HomeFeaturedTestimonials } from "@/components/HomeFeaturedTestimonials";
 import { HomeFinalCta } from "@/components/HomeFinalCta";
+import { HomeInsuranceCheckSteps } from "@/components/HomeInsuranceCheckSteps";
+import { HomeOfferMidCta } from "@/components/HomeOfferMidCta";
 import { HomePriorityServices } from "@/components/HomePriorityServices";
 import { HomeTrustStrip } from "@/components/HomeTrustStrip";
 import { HomeWhatToExpect } from "@/components/HomeWhatToExpect";
 import { VaCommunityCareBadge } from "@/components/VaCommunityCareBadge";
+import { homeOffer } from "@/lib/home-offer";
 import { defaultSiteDescription, localSeo } from "@/lib/local-seo";
 import { defaultOgImage } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -35,13 +38,6 @@ export const metadata: Metadata = {
     images: [defaultOgImage.url],
   },
 };
-
-/** Friction-reducers — keep wording aligned with intake / front desk. */
-const heroBullets = [
-  "Same-day openings when we can",
-  "We verify insurance — you bring the card",
-  "No referral required",
-] as const;
 
 const team = [
   {
@@ -104,39 +100,51 @@ export default function HomePage() {
               Chiro · PT · Massage · Injury recovery
             </span>
           </p>
-          <h1 className="mt-4 max-w-[min(100%,22rem)] font-[family-name:var(--font-display)] text-[1.6rem] font-semibold leading-[1.1] tracking-tight sm:mt-5 sm:max-w-4xl sm:text-[1.875rem] sm:leading-tight md:text-[2.125rem]">
-            <span className="md:hidden">Still stuck with back, neck, or injury pain?</span>
+          <h1 className="mt-4 max-w-[min(100%,22rem)] font-[family-name:var(--font-display)] text-[1.6rem] font-semibold leading-[1.08] tracking-tight sm:mt-5 sm:max-w-4xl sm:text-[1.875rem] sm:leading-tight md:text-[2.125rem]">
+            <span className="md:hidden">Back, neck, or injury pain? Call today.</span>
             <span className="hidden md:inline">
-              Still Stuck With Back, Neck, or Injury Pain? Get Relief in Land O&apos; Lakes, FL
+              Back, Neck, or Injury Pain? Get Moving Again — Land O&apos; Lakes, FL
             </span>
           </h1>
-          <p className="mt-3 max-w-2xl text-base leading-snug text-gw-cream/90 sm:mt-4 sm:text-lg">
-            <span className="md:hidden">
-              One place for chiro, PT, and massage — a real plan, not patchwork. On Land O&apos;
-              Lakes Blvd; book or call today.
-            </span>
+          <p className="mt-2 text-sm font-semibold text-gw-accent sm:text-base">
+            <span className="md:hidden">Relief can start fast — same-day visits often open.</span>
             <span className="hidden md:inline">
-              {site.name}: chiropractic, physical therapy, and massage under one roof — one plan, not
-              three waiting rooms. Same-day spots when the schedule allows.
+              Fast access to care: same-day appointments when the schedule allows — chiro, PT, and
+              massage in one clinic.
             </span>
           </p>
-          {/* Primary: Book Your First Visit · Secondary: Call Now */}
-          <div className="mt-8 flex flex-col gap-3.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+          <p className="mt-3 max-w-2xl text-base leading-snug text-gw-cream/90 sm:mt-3 sm:text-lg">
+            <span className="md:hidden">
+              One team on Land O&apos; Lakes Blvd — stop juggling offices. Call or book now.
+            </span>
+            <span className="hidden md:inline">
+              {site.name} — stop driving between offices. One coordinated plan for pain and recovery
+              on Land O&apos; Lakes Blvd.
+            </span>
+          </p>
+          <div className="mt-7 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
+            <a
+              href={site.phoneTel}
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gw-accent px-6 py-4 text-center text-base font-bold text-gw-ink shadow-lg transition hover:opacity-95 active:opacity-90 sm:w-auto sm:px-8"
+            >
+              Call Now for Relief
+            </a>
             <Link
               href="/contact/"
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gw-accent px-6 py-4 text-center text-base font-bold text-gw-ink shadow-md transition hover:opacity-95 active:opacity-90 sm:w-auto sm:px-8"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-white bg-transparent px-6 py-4 text-center text-base font-bold text-white transition hover:bg-white/10 active:bg-white/15 sm:w-auto sm:px-8"
             >
               Book Your First Visit
             </Link>
-            <a
-              href={site.phoneTel}
-              className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-white/60 bg-white/10 px-6 py-4 text-center text-base font-bold text-white backdrop-blur-[1px] transition hover:bg-white/15 active:bg-white/20 sm:w-auto sm:px-8"
-            >
-              Call Now
-            </a>
           </div>
-          <ul className="mt-8 max-w-md space-y-3 text-[0.9375rem] leading-snug text-gw-cream/90 sm:mt-8 sm:max-w-xl sm:space-y-3 sm:text-[0.9375rem]">
-            {heroBullets.map((text) => (
+          <p className="mt-4 max-w-xl text-sm leading-snug text-gw-cream/95 sm:mt-5 sm:text-base">
+            <span className="font-semibold text-gw-accent">{homeOffer.heroNearCtaLineShort}</span>
+            <span className="md:hidden"> — easy, fast, no hassle.</span>
+            <span className="hidden md:inline">
+              {homeOffer.heroNearCtaLine.slice(homeOffer.heroNearCtaLineShort.length)}
+            </span>
+          </p>
+          <ul className="mt-5 max-w-md space-y-2.5 text-[0.9375rem] leading-snug text-gw-cream/90 sm:mt-6 sm:max-w-xl sm:space-y-3 sm:text-[0.9375rem]">
+            {homeOffer.heroBullets.map((text) => (
               <li key={text} className="flex gap-3">
                 <span className="mt-0.5 shrink-0 text-gw-accent" aria-hidden>
                   <CheckIcon className="h-5 w-5" />
@@ -149,8 +157,10 @@ export default function HomePage() {
         <HomeTrustStrip />
       </section>
 
+      <HomeInsuranceCheckSteps />
       <HomePriorityServices />
       <HomeWhatToExpect />
+      <HomeOfferMidCta />
       <HomeFeaturedTestimonials />
 
       <HomeFinalCta />
@@ -275,6 +285,10 @@ export default function HomePage() {
               <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold sm:text-3xl">
                 Ready today? Call. Prefer email? Send it.
               </h2>
+              <p className="mt-2 text-sm font-medium text-white/95 sm:text-base">
+                {homeOffer.ctaSupporting}{" "}
+                <span className="text-white/85">{homeOffer.heroNearCtaLineShort}.</span>
+              </p>
               <p className="mt-4 text-base leading-relaxed text-white/90 sm:mt-3 sm:text-base">
                 <span className="md:hidden">
                   Form below — we reply next business day. Need help now?{" "}
@@ -305,7 +319,7 @@ export default function HomePage() {
             <AppointmentForm
               variant="consult"
               heading="Write us"
-              intro="What hurts + best phone/email. We answer in one business day — or call now to grab a same-day slot."
+              intro="Mention your carrier for a free insurance check. What hurts + phone/email — we reply in one business day, or call for same-day openings."
             />
           </div>
         </div>

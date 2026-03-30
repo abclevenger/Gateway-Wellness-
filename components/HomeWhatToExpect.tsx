@@ -2,7 +2,7 @@ import { localSeo } from "@/lib/local-seo";
 
 const steps = [
   {
-    title: "Book your visit",
+    title: "Book Your First Visit",
     body: "Call or book online. Same-day when we have openings.",
   },
   {

@@ -29,7 +29,7 @@ export function HomeFeaturedTestimonials() {
           href="/testimonials/"
           className="inline-flex min-h-[3.25rem] w-full shrink-0 items-center justify-center rounded-full border-2 border-gw-teal/50 px-6 text-base font-bold text-gw-teal-dark transition hover:bg-gw-teal/10 active:bg-gw-teal/15 sm:min-h-0 sm:w-auto sm:py-2.5 sm:text-sm"
         >
-          Read more reviews
+          See why locals trust us
         </Link>
       </div>
       <ul className="mt-10 grid gap-6 lg:grid-cols-3 lg:gap-5">
