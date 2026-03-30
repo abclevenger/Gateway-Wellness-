@@ -18,10 +18,9 @@ export const localSeo = {
 } as const;
 
 export const defaultSiteDescription =
-  `${site.name} is an integrative clinic on Land O' Lakes Blvd offering chiropractic care, ` +
-  `medical services, physical therapy, and massage therapy in ${localSeo.cityState}. ` +
-  `We serve ${localSeo.county}, ${localSeo.nearbyCities}. Same-day appointments, most insurance accepted. ` +
-  `Call ${site.phone}.`;
+  `${site.name} in ${localSeo.cityState} — pain relief and injury recovery with chiropractic, ` +
+  `physical therapy, massage, and rehab on Land O' Lakes Blvd. Serving ${localSeo.county} and ` +
+  `${localSeo.nearbyCities}. Same-day appointments often available; most insurance accepted. Call ${site.phone}.`;
 
 /** Natural suffix for service page meta descriptions */
 export function localMetaSuffix(): string {

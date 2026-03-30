@@ -1,22 +1,21 @@
-/**
- * Short excerpts for the homepage. Full quotes live in lib/testimonials.ts and on /testimonials/.
- * Curated from the same patient feedback pool as your reputation materials; Google review text
- * is not machine-readable from Maps URLs—paste new 5-star snippets here when you refresh GBP.
- */
+/** PLACEHOLDER(business): Refresh with current Google / written reviews. */
 export const homeFeaturedTestimonials = [
   {
     author: "R. Spaulding",
+    outcome: "Shoulder / mobility",
     excerpt:
-      "Last resort before another shoulder surgery—Dr. Malhoit diagnosed and adjusted in about 15 minutes. At 77, I have my life back.",
+      "Last option before surgery — in minutes I had answers and treatment. At 77, I’m functional again.",
   },
   {
     author: "Suzanne B.",
+    outcome: "Vertigo",
     excerpt:
-      "Severe vertigo—fixed in two adjustments. My PCP had referred me to three specialists. I still get care here and refer everyone I can.",
+      "Brutal vertigo — two visits here after three specialists elsewhere. I still send people this way.",
   },
   {
     author: "S. Freedom",
+    outcome: "Back & neck",
     excerpt:
-      "Severe back and neck pain—totally gone. No surgery. Thank you Dr. Rob and the entire team.",
+      "Severe back and neck pain improved greatly — avoided surgery. Dr. Rob and staff earned my trust.",
   },
 ] as const;

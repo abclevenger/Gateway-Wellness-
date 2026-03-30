@@ -17,14 +17,13 @@ export function HomeTrustStrip() {
       <div className="border-t border-white/10 px-4 py-5 sm:px-6 sm:py-4">
         <p className="mx-auto max-w-2xl text-center text-xs leading-relaxed text-gw-cream/75 sm:text-xs sm:leading-snug">
           <span className="lg:hidden">
-            Veterans:{" "}
-            <span className="font-semibold text-gw-cream/95">VA Community Care</span> when your VA
-            authorizes community visits.
+            Veterans: <span className="font-semibold text-gw-cream/95">VA Community Care</span> when
+            authorized.
           </span>
           <span className="hidden lg:inline">
-            Eligible veterans: we see patients through{" "}
-            <span className="font-semibold text-gw-cream/90">VA Community Care</span> when your VA
-            referral authorizes care in the community.
+            Veterans eligible for{" "}
+            <span className="font-semibold text-gw-cream/90">VA Community Care</span> — we see patients
+            with an approved community referral.
           </span>
         </p>
         <VaCommunityCareBadge className="mx-auto mt-4 max-w-6xl sm:mt-3" />

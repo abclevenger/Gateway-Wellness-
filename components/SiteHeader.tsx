@@ -142,13 +142,13 @@ export function SiteHeader() {
             href="/online-scheduling/"
             className="ml-1 rounded-full border border-gw-teal/40 px-4 py-2 text-sm font-semibold text-gw-teal-dark transition hover:border-gw-teal hover:bg-gw-cream"
           >
-            Schedule
+            Book online
           </Link>
           <Link
             href="/contact/"
             className="ml-2 rounded-full bg-gw-teal px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-gw-teal-dark"
           >
-            Book visit
+            First visit
           </Link>
         </nav>
 
@@ -223,14 +223,14 @@ export function SiteHeader() {
                   className="flex min-h-14 items-center justify-center rounded-xl border-2 border-gw-teal bg-gw-white px-4 text-center text-base font-bold text-gw-teal-dark transition hover:bg-gw-cream active:bg-gw-cream"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Book a visit
+                  Book Your First Visit
                 </Link>
                 <Link
                   href="/online-scheduling/"
                   className="flex min-h-12 items-center justify-center rounded-xl border border-gw-border bg-gw-white px-4 text-center text-base font-semibold text-gw-teal-dark transition hover:bg-gw-cream"
                   onClick={() => setMobileOpen(false)}
                 >
-                  Online scheduling
+                  Book online
                 </Link>
               </div>
             </div>

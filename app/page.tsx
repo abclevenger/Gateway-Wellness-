@@ -12,10 +12,10 @@ import { defaultSiteDescription, localSeo } from "@/lib/local-seo";
 import { defaultOgImage } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-const homeOgTitle = `${site.name} | ${localSeo.cityState}`;
+const homeOgTitle = `${site.name} | Pain relief & rehab · ${localSeo.cityState}`;
 
-/** SEO-lite: intent-led homepage title; keeps brand + location visible in search. */
-const homeMetaTitle = `Back & neck pain · Chiro, PT & massage | ${localSeo.cityState}`;
+/** SEO-lite: brand + intent + local terms. */
+const homeMetaTitle = `Gateway Wellness & Rehab | Pain relief & rehab · ${localSeo.cityState}`;
 
 export const metadata: Metadata = {
   title: homeMetaTitle,
@@ -36,10 +36,11 @@ export const metadata: Metadata = {
   },
 };
 
+/** Friction-reducers — keep wording aligned with intake / front desk. */
 const heroBullets = [
-  "Same-day visits when we can",
-  "We help verify your insurance",
-  "No referral needed",
+  "Same-day openings when we can",
+  "We verify insurance — you bring the card",
+  "No referral required",
 ] as const;
 
 const team = [
@@ -92,30 +93,44 @@ export default function HomePage() {
           <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-gw-teal blur-3xl" />
         </div>
         <div className="relative mx-auto max-w-6xl px-4 pb-10 pt-11 sm:px-6 sm:pb-8 sm:pt-20">
-          <p className="text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.16em] text-gw-accent sm:text-sm sm:tracking-[0.18em]">
-            {site.address.street} · {localSeo.cityState}
+          <p className="text-[0.8125rem] font-semibold uppercase leading-snug tracking-[0.14em] text-gw-accent sm:text-sm sm:tracking-[0.16em]">
+            <span className="block normal-case text-[0.78rem] text-gw-cream/95 sm:text-xs sm:uppercase sm:tracking-[0.16em]">
+              {site.name}
+            </span>
+            <span className="mt-1 block text-[0.7rem] font-medium normal-case tracking-normal text-gw-cream/85 sm:mt-1.5 sm:inline sm:text-[0.8125rem] sm:font-semibold sm:uppercase sm:tracking-[0.16em] sm:text-gw-accent">
+              {site.address.street} · {localSeo.cityState}
+            </span>
+            <span className="mt-1.5 block text-[0.68rem] font-medium normal-case tracking-normal text-gw-cream/80 sm:mt-1 sm:inline sm:text-xs sm:text-gw-cream/85">
+              Chiro · PT · Massage · Injury recovery
+            </span>
           </p>
-          <h1 className="mt-3.5 max-w-[min(100%,19rem)] font-[family-name:var(--font-display)] text-[1.65rem] font-semibold leading-[1.12] tracking-tight sm:mt-4 sm:max-w-3xl sm:text-3xl sm:tracking-normal md:text-[2.25rem]">
-            Stop Living With Back or Neck Pain
+          <h1 className="mt-4 max-w-[min(100%,22rem)] font-[family-name:var(--font-display)] text-[1.6rem] font-semibold leading-[1.1] tracking-tight sm:mt-5 sm:max-w-4xl sm:text-[1.875rem] sm:leading-tight md:text-[2.125rem]">
+            <span className="md:hidden">Still stuck with back, neck, or injury pain?</span>
+            <span className="hidden md:inline">
+              Still Stuck With Back, Neck, or Injury Pain? Get Relief in Land O&apos; Lakes, FL
+            </span>
           </h1>
-          <p className="mt-3 max-w-xl text-base leading-snug text-gw-cream/90 sm:mt-4 sm:max-w-2xl sm:text-lg">
+          <p className="mt-3 max-w-2xl text-base leading-snug text-gw-cream/90 sm:mt-4 sm:text-lg">
             <span className="md:hidden">
-              Real relief without surgery or heavy medication.
+              One place for chiro, PT, and massage — a real plan, not patchwork. On Land O&apos;
+              Lakes Blvd; book or call today.
             </span>
             <span className="hidden md:inline">
-              Get real relief in weeks — without surgery or heavy medication.
+              {site.name}: chiropractic, physical therapy, and massage under one roof — one plan, not
+              three waiting rooms. Same-day spots when the schedule allows.
             </span>
           </p>
+          {/* Primary: Book Your First Visit · Secondary: Call Now */}
           <div className="mt-8 flex flex-col gap-3.5 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3">
             <Link
               href="/contact/"
-              className="inline-flex min-h-14 items-center justify-center rounded-full bg-gw-accent px-8 py-4 text-center text-base font-bold text-gw-ink shadow-md transition hover:opacity-95 active:opacity-90 sm:min-h-12 sm:py-3.5 sm:font-semibold"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gw-accent px-6 py-4 text-center text-base font-bold text-gw-ink shadow-md transition hover:opacity-95 active:opacity-90 sm:w-auto sm:px-8"
             >
-              Book Appointment
+              Book Your First Visit
             </Link>
             <a
               href={site.phoneTel}
-              className="inline-flex min-h-14 items-center justify-center rounded-full border-2 border-white/50 bg-transparent px-8 py-4 text-center text-base font-bold text-white transition hover:bg-white/10 active:bg-white/15 sm:min-h-12 sm:py-3.5 sm:font-semibold"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-white/60 bg-white/10 px-6 py-4 text-center text-base font-bold text-white backdrop-blur-[1px] transition hover:bg-white/15 active:bg-white/20 sm:w-auto sm:px-8"
             >
               Call Now
             </a>
@@ -138,17 +153,19 @@ export default function HomePage() {
       <HomeWhatToExpect />
       <HomeFeaturedTestimonials />
 
-      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <HomeFinalCta />
+
+      <section className="mx-auto max-w-6xl px-4 py-[4.5rem] sm:px-6 sm:py-20">
         <h2 className="text-center font-[family-name:var(--font-display)] text-2xl font-semibold text-gw-teal-dark sm:text-3xl md:text-4xl">
-          Providers who actually talk to each other
+          Your team — in one building
         </h2>
         <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-gw-muted sm:mt-2 sm:text-base">
           <span className="md:hidden">
-            Chiro, PT, massage &amp; medical — one roof in {localSeo.city}. Less runaround.
+            Chiro, PT, massage &amp; medical support in {localSeo.city}. One chart, one direction.
           </span>
           <span className="hidden md:inline">
-            Chiro, PT, massage, and medical — under one roof in {localSeo.city}. Less runaround,
-            clearer plans.
+            Chiropractors, physical therapists, massage, and medical support — same address in{" "}
+            {localSeo.city}. Less phone-tag between offices; more follow-through on your recovery.
           </span>
         </p>
         <div className="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-10 lg:grid-cols-4">
@@ -173,50 +190,49 @@ export default function HomePage() {
 
         <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-gw-border bg-gw-cream/50 p-6 sm:p-8 md:mt-16">
           <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-gw-teal-dark">
-            Straight answers, then a plan
+            No runaround — here&apos;s how we work
           </h3>
-          <div className="mt-4 space-y-3 text-sm leading-relaxed text-gw-muted sm:mt-3 sm:text-base">
-            <p className="md:hidden">
-              We look at how you move, what hurts, and your history — then map next steps
-              (adjustments, PT, massage; imaging when it fits).
-            </p>
-            <p className="hidden md:block">
-              We look at how you move, what hurts, and your history — then map next steps
-              (adjustments, PT, massage, imaging only when it fits). Most major insurance
-              accepted; same-day openings when the schedule allows.
-            </p>
-            <p className="text-sm text-gw-muted md:hidden">
-              Most major insurance accepted. Same-day when the schedule allows.
+          <ul className="mt-4 list-none space-y-2.5 text-sm leading-snug text-gw-muted md:hidden">
+            <li className="flex gap-2.5">
+              <span className="mt-0.5 font-bold text-gw-teal" aria-hidden>
+                ·
+              </span>
+              <span>We look at movement, symptoms, and history — not a rushed template.</span>
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-0.5 font-bold text-gw-teal" aria-hidden>
+                ·
+              </span>
+              <span>Adjustments, PT, massage — imaging only when it&apos;s warranted.</span>
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-0.5 font-bold text-gw-teal" aria-hidden>
+                ·
+              </span>
+              <span>Most insurance accepted. Same-day when slots open.</span>
+            </li>
+          </ul>
+          <div className="mt-4 hidden text-sm leading-relaxed text-gw-muted md:block md:text-base">
+            <p>
+              We examine how you move, what hurts, and your history — then lay out next steps:
+              adjustments, PT, massage, imaging only when it fits. Most major insurance accepted;
+              same-day openings when the schedule allows.
             </p>
           </div>
         </div>
 
         <div className="mx-auto mt-14 max-w-4xl">
           <h3 className="text-center font-[family-name:var(--font-display)] text-xl font-semibold text-gw-teal-dark sm:text-2xl">
-            Plans we see a lot
+            Insurance we see often
           </h3>
-          <p className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-gw-muted sm:mt-2 sm:text-sm sm:leading-snug">
-            <span className="md:hidden">
-              Logos = common networks, not a guarantee.
-              <span className="mt-2 block">
-                <a
-                  href={site.phoneTel}
-                  className="inline-flex min-h-11 items-center justify-center rounded-lg px-2 font-semibold text-gw-teal underline decoration-2 underline-offset-2"
-                >
-                  Call {site.phone}
-                </a>{" "}
-                or your carrier to verify.
-              </span>
-            </span>
-            <span className="hidden md:inline">
-              Logos = common networks, not a guarantee. Your plan rules the final answer — call{" "}
-              <a href={site.phoneTel} className="font-medium text-gw-teal underline">
-                {site.phone}
-              </a>{" "}
-              or your carrier to verify.
-            </span>
+          <p className="mx-auto mt-3 hidden max-w-xl text-center text-sm leading-snug text-gw-muted md:block">
+            Logos are examples — coverage is always plan-specific. Call{" "}
+            <a href={site.phoneTel} className="font-medium text-gw-teal underline">
+              {site.phone}
+            </a>{" "}
+            or your card to confirm.
           </p>
-          <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
+          <ul className="mt-8 hidden flex-wrap items-center justify-center gap-x-10 gap-y-8 md:flex">
             {insuranceLogos.map((logo) => (
               <li key={logo.src}>
                 <div className="flex h-16 w-36 items-center justify-center rounded-xl bg-gw-white px-3 py-2 shadow-sm ring-1 ring-gw-border/80">
@@ -231,6 +247,15 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+          <div className="mx-auto mt-8 max-w-md rounded-xl border border-gw-border bg-gw-white px-4 py-5 text-center md:hidden">
+            <p className="text-sm font-medium text-gw-ink">Most major plans — we&apos;ll confirm yours</p>
+            <a
+              href={site.phoneTel}
+              className="mt-3 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-gw-teal px-4 text-base font-bold text-white shadow-sm transition hover:bg-gw-teal-dark active:bg-gw-teal-dark"
+            >
+              Call {site.phone} — verify benefits
+            </a>
+          </div>
           <div className="mt-10 flex flex-col items-center gap-3 border-t border-gw-border pt-10">
             <p className="text-center text-xs font-semibold uppercase tracking-wide text-gw-muted">
               Veterans — Community Care
@@ -240,26 +265,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      <HomeFinalCta />
-
-      <section className="bg-gw-teal text-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20">
+      <section
+        id="contact-lead"
+        className="scroll-mt-4 bg-gw-teal text-white md:scroll-mt-0"
+      >
+        <div className="mx-auto max-w-6xl px-4 py-[4.75rem] sm:px-6 sm:py-20">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-10">
             <div>
               <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold sm:text-3xl">
-                Rather talk or text first?
+                Ready today? Call. Prefer email? Send it.
               </h2>
               <p className="mt-4 text-base leading-relaxed text-white/90 sm:mt-3 sm:text-base">
                 <span className="md:hidden">
-                  Message us — we reply next business day. Hurting now?{" "}
+                  Form below — we reply next business day. Need help now?{" "}
                   <a href={site.phoneTel} className="font-bold underline underline-offset-2">
-                    Call {site.phone}
+                    {site.phone}
                   </a>
-                  .
                 </span>
                 <span className="hidden md:inline">
-                  Drop a message — we reply next business day. Hurting today? Skip the wait:
-                  call <a href={site.phoneTel} className="font-semibold underline">{site.phone}</a>.
+                  Use the form — we respond next business day. Need today?{" "}
+                  <a href={site.phoneTel} className="font-semibold underline">{site.phone}</a>.
                 </span>
               </p>
               <ul className="mt-6 space-y-1.5 text-sm text-white/95">
@@ -279,8 +304,8 @@ export default function HomePage() {
             </div>
             <AppointmentForm
               variant="consult"
-              heading="Send a quick note"
-              intro="What hurts, how long, and how to reach you. We reply within one business day — or call now for same-day options."
+              heading="Write us"
+              intro="What hurts + best phone/email. We answer in one business day — or call now to grab a same-day slot."
             />
           </div>
         </div>

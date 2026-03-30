@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-gw-border bg-gw-teal-dark pb-[calc(6.25rem+env(safe-area-inset-bottom,0px))] pt-12 text-gw-cream md:pb-12">
+    <footer className="border-t border-gw-border bg-gw-teal-dark pb-[calc(6.5rem+env(safe-area-inset-bottom,0px))] pt-12 text-gw-cream md:pb-12">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 sm:grid-cols-2 sm:px-6 lg:grid-cols-3">
         <div>
           <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold text-gw-white">

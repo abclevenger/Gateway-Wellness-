@@ -18,17 +18,18 @@ export function MobileStickyActions() {
       <div className="mx-auto flex max-w-lg gap-3.5">
         <a
           href={site.phoneTel}
-          className="flex min-h-[3.5rem] min-w-0 flex-[1.25] items-center justify-center gap-2 rounded-xl bg-gw-teal px-3 text-base font-bold text-white shadow-md transition hover:bg-gw-teal-dark active:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark"
+          className="flex min-h-12 min-w-0 flex-[1.25] items-center justify-center gap-2 rounded-xl bg-gw-teal px-3 text-base font-bold text-white shadow-md transition hover:bg-gw-teal-dark active:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark"
         >
           <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden />
           Call Now
         </a>
         <Link
           href="/contact/"
-          className="flex min-h-[3.5rem] min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-gw-teal bg-gw-white px-3 text-base font-bold text-gw-teal-dark transition hover:bg-gw-cream active:bg-gw-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal"
+          aria-label="Book your first visit"
+          className="flex min-h-12 min-w-0 flex-1 items-center justify-center gap-1 rounded-xl border-2 border-gw-teal bg-gw-white px-1.5 text-xs font-bold leading-[1.15] text-gw-teal-dark transition hover:bg-gw-cream active:bg-gw-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal sm:gap-2 sm:px-3 sm:text-sm"
         >
-          <CalendarIcon className="h-5 w-5 shrink-0" aria-hidden />
-          Book visit
+          <CalendarIcon className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" aria-hidden />
+          <span className="max-w-[7.25rem] text-center sm:max-w-none">Book Your First Visit</span>
         </Link>
       </div>
     </div>
