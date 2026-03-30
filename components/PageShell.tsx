@@ -12,7 +12,7 @@ export function PageShell({ children }: { children: ReactNode }) {
       <main
         id="main-content"
         tabIndex={-1}
-        className="flex-1 pb-[4.5rem] outline-none md:pb-0"
+        className="flex-1 pb-24 outline-none md:pb-0"
       >
         {children}
       </main>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SocialLinks } from "@/components/SocialLinks";
+import { VaCommunityCareBadge } from "@/components/VaCommunityCareBadge";
 import { site } from "@/lib/site";
 
 export function SiteFooter() {
@@ -80,6 +81,14 @@ export function SiteFooter() {
               Accessibility
             </Link>
           </div>
+        </div>
+      </div>
+      <div className="border-t border-white/10 px-4 py-6 sm:px-6">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-2">
+          <p className="text-center text-xs text-gw-cream/75">
+            Veterans: VA Community Care when your referral authorizes community treatment.
+          </p>
+          <VaCommunityCareBadge variant="footer" />
         </div>
       </div>
       <div className="border-t border-white/10 px-4 py-6 sm:px-6">

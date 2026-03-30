@@ -4,37 +4,30 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 
 /**
- * Thumb-reachable primary actions on small screens — most patients call or book first.
+ * Thumb-reachable CTAs on small screens — call and book first (larger tap targets).
  */
 export function MobileStickyActions() {
   return (
     <div
-      className="fixed inset-x-0 bottom-0 z-40 border-t border-gw-border bg-gw-white/95 px-3 py-2 shadow-[0_-4px_20px_rgba(15,31,28,0.08)] backdrop-blur-md md:hidden"
-      style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-gw-border bg-gw-white/98 px-4 py-3 shadow-[0_-6px_24px_rgba(15,31,28,0.1)] backdrop-blur-md md:hidden"
+      style={{ paddingBottom: "max(0.75rem, env(safe-area-inset-bottom))" }}
       role="navigation"
       aria-label="Quick actions"
     >
-      <div className="mx-auto flex max-w-lg gap-1.5">
+      <div className="mx-auto flex max-w-lg gap-3">
         <a
           href={site.phoneTel}
-          className="flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl border border-gw-teal bg-gw-white py-2.5 text-xs font-semibold text-gw-teal-dark transition hover:bg-gw-cream focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal sm:flex-row sm:gap-1.5 sm:py-3 sm:text-sm"
+          className="flex min-h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-xl border-2 border-gw-teal bg-gw-white text-sm font-bold text-gw-teal-dark transition hover:bg-gw-cream focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal"
         >
           <PhoneIcon className="h-5 w-5 shrink-0" aria-hidden />
-          <span>Call</span>
+          Call now
         </a>
         <Link
-          href="/online-scheduling/"
-          className="flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl border border-gw-teal/40 bg-gw-teal/10 py-2.5 text-xs font-semibold text-gw-teal-dark transition hover:bg-gw-teal/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal sm:flex-row sm:gap-1.5 sm:py-3 sm:text-sm"
+          href="/contact/"
+          className="flex min-h-[52px] min-w-0 flex-1 items-center justify-center gap-2 rounded-xl bg-gw-teal px-2 text-sm font-bold text-white shadow-md transition hover:bg-gw-teal-dark focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark"
         >
           <CalendarIcon className="h-5 w-5 shrink-0" aria-hidden />
-          <span>Book online</span>
-        </Link>
-        <Link
-          href="/contact/"
-          className="flex min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-xl bg-gw-teal py-2.5 text-xs font-semibold text-white shadow-sm transition hover:bg-gw-teal-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gw-teal-dark sm:flex-row sm:gap-1.5 sm:py-3 sm:text-sm"
-        >
-          <MailIcon className="h-5 w-5 shrink-0" aria-hidden />
-          <span>Contact</span>
+          Book a visit
         </Link>
       </div>
     </div>
@@ -54,15 +47,6 @@ function CalendarIcon({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
       <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
       <path d="M16 2v4M8 2v4M3 10h18" />
-    </svg>
-  );
-}
-
-function MailIcon({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-      <polyline points="22,6 12,13 2,6" />
     </svg>
   );
 }

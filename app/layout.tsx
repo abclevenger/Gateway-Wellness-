@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import { GlobalJsonLd } from "@/components/GlobalJsonLd";
 import { PageShell } from "@/components/PageShell";
 import { defaultSiteDescription, localSeo } from "@/lib/local-seo";
@@ -85,6 +86,17 @@ export default function RootLayout({
           Skip to main content
         </a>
         <PageShell>{children}</PageShell>
+        {/* LeadConnector / HighLevel chat widget */}
+        <Script
+          id="leadconnector-chat-widget"
+          src="https://widgets.leadconnectorhq.com/loader.js"
+          strategy="afterInteractive"
+          {...{
+            "data-resources-url":
+              "https://widgets.leadconnectorhq.com/chat-widget/loader.js",
+            "data-widget-id": "66fadf4c3fd69aa90a77e1d4",
+          }}
+        />
       </body>
     </html>
   );

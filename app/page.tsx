@@ -2,14 +2,23 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { AppointmentForm } from "@/components/AppointmentForm";
+import { HomeFeaturedTestimonials } from "@/components/HomeFeaturedTestimonials";
+import { HomeFinalCta } from "@/components/HomeFinalCta";
+import { HomePriorityServices } from "@/components/HomePriorityServices";
+import { HomeTrustStrip } from "@/components/HomeTrustStrip";
+import { HomeWhatToExpect } from "@/components/HomeWhatToExpect";
+import { VaCommunityCareBadge } from "@/components/VaCommunityCareBadge";
 import { defaultSiteDescription, localSeo } from "@/lib/local-seo";
 import { defaultOgImage } from "@/lib/seo";
 import { site } from "@/lib/site";
 
 const homeOgTitle = `${site.name} | ${localSeo.cityState}`;
 
+/** SEO-lite: intent-led homepage title; keeps brand + location visible in search. */
+const homeMetaTitle = `Back & neck pain · Chiro, PT & massage | ${localSeo.cityState}`;
+
 export const metadata: Metadata = {
-  title: `Chiropractor, PT & medical rehab in ${localSeo.cityState}`,
+  title: homeMetaTitle,
   description: defaultSiteDescription,
   alternates: { canonical: "/" },
   openGraph: {
@@ -27,32 +36,11 @@ export const metadata: Metadata = {
   },
 };
 
-const highlights = [
-  {
-    title: "Personalized treatment",
-    body: "You will receive a full individualized treatment plan.",
-  },
-  {
-    title: "Licensed therapists",
-    body: "Your treatment will be performed by only licensed therapists.",
-  },
-  {
-    title: "Experienced staff",
-    body: "Our therapists are trained and certified in therapy technique.",
-  },
-  {
-    title: "Comfortable clinic",
-    body: "Our clinic feels like a comfortable health & fitness center.",
-  },
-  {
-    title: "Practitioners network",
-    body: "We will work closely with all your health practitioners.",
-  },
-  {
-    title: "Therapy goals",
-    body: "Setting goals is the best way to enjoy a successful outcome.",
-  },
-];
+const heroBullets = [
+  "Same-day visits when we can fit you in",
+  "We will check benefits — have your member ID ready",
+  "Florida: no referral required for chiropractic",
+] as const;
 
 const team = [
   {
@@ -103,84 +91,59 @@ export default function HomePage() {
           <div className="absolute -left-20 top-0 h-96 w-96 rounded-full bg-gw-accent blur-3xl" />
           <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-gw-teal blur-3xl" />
         </div>
-        <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-gw-accent">
-            {site.tagline}
+        <div className="relative mx-auto max-w-6xl px-4 pb-6 pt-14 sm:px-6 sm:pb-8 sm:pt-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gw-accent sm:text-sm">
+            {site.address.street} · {localSeo.cityState}
           </p>
-          <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold leading-tight sm:text-5xl">
-            Welcome to {site.name}
+          <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-display)] text-[1.65rem] font-semibold leading-[1.12] sm:text-3xl md:text-[2.35rem]">
+            Back, neck, or injury pain? One Land O&apos; Lakes team for relief &amp; rehab.
           </h1>
-          <p className="mt-3 max-w-2xl text-sm font-medium text-gw-cream/85">
-            {site.address.street} · {localSeo.cityState} · Serving {localSeo.county} &amp;{" "}
-            Tampa Bay
+          <p className="mt-4 max-w-2xl text-base leading-snug text-gw-cream/90 sm:text-lg">
+            Chiropractors, physical therapy, massage, and medical support — same address on
+            Land O&apos; Lakes Blvd. Pick a time online, request a slot, or call. We&apos;ll
+            tell you what to bring and what happens first.
           </p>
-          <p className="mt-6 max-w-2xl text-lg text-gw-cream/90">
-            We will be your first choice, your second opinion, or your last resort —
-            with personalized care across chiropractic, medical, physical therapy, and
-            massage.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
             <Link
               href="/contact/"
-              className="rounded-full bg-gw-accent px-6 py-3 text-sm font-semibold text-gw-ink shadow-sm transition hover:opacity-90"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-gw-accent px-8 py-3.5 text-center text-base font-semibold text-gw-ink shadow-md transition hover:opacity-95"
             >
-              Schedule an appointment
+              Get on the schedule
             </Link>
-            <Link
-              href="/online-scheduling/"
-              className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold text-white hover:bg-white/10"
-            >
-              24/7 online scheduling
-            </Link>
-          </div>
-          <p className="mt-5 text-sm text-gw-cream/75">
-            Prefer to call?{" "}
             <a
               href={site.phoneTel}
-              className="font-semibold text-gw-accent underline decoration-gw-accent/50 underline-offset-2 hover:decoration-gw-accent"
+              className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-white/40 bg-transparent px-8 py-3.5 text-center text-base font-semibold text-white transition hover:bg-white/10"
             >
-              {site.phone}
+              Call {site.phone}
             </a>
-          </p>
+          </div>
+          <ul className="mt-8 max-w-xl space-y-3 text-sm text-gw-cream/90 sm:text-[0.9375rem]">
+            {heroBullets.map((text) => (
+              <li key={text} className="flex gap-3">
+                <span className="mt-0.5 shrink-0 text-gw-accent" aria-hidden>
+                  <CheckIcon className="h-5 w-5" />
+                </span>
+                <span>{text}</span>
+              </li>
+            ))}
+          </ul>
         </div>
+        <HomeTrustStrip />
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {highlights.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-gw-border bg-gw-white p-6 shadow-sm"
-            >
-              <h2 className="font-[family-name:var(--font-display)] text-xl font-semibold text-gw-teal-dark">
-                {item.title}
-              </h2>
-              <p className="mt-2 text-sm leading-relaxed text-gw-muted">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+      <HomePriorityServices />
+      <HomeWhatToExpect />
+      <HomeFeaturedTestimonials />
 
-      <section className="border-y border-gw-border bg-gw-white">
-        <div className="mx-auto max-w-3xl px-4 py-14 text-center sm:px-6">
-          <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold text-gw-teal-dark">
-            {site.name} primary goal
-          </h2>
-          <p className="mt-4 text-lg leading-relaxed text-gw-muted">
-            Our primary goal is to be your{" "}
-            <span className="font-semibold text-gw-ink">first choice</span> as a wellness
-            partner — from injury through functional rehabilitation — so you can enjoy a
-            life pain-free on your own terms instead of adjusting your life to work around
-            your pain.
-          </p>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
-        <h2 className="text-center font-[family-name:var(--font-display)] text-3xl font-semibold text-gw-teal-dark">
-          Meet our team
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
+        <h2 className="text-center font-[family-name:var(--font-display)] text-2xl font-semibold text-gw-teal-dark sm:text-3xl md:text-4xl">
+          Providers who actually talk to each other
         </h2>
-        <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <p className="mx-auto mt-2 max-w-xl text-center text-sm text-gw-muted sm:text-base">
+          Chiro, PT, massage, and medical — under one roof in {localSeo.city}. Less runaround,
+          clearer plans.
+        </p>
+        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
             <div key={member.name} className="text-center">
               <div className="relative mx-auto aspect-square w-full max-w-[220px] overflow-hidden rounded-2xl border border-gw-border bg-gw-white shadow-sm">
@@ -200,29 +163,27 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="mx-auto mt-12 max-w-3xl rounded-2xl border border-gw-border bg-gw-cream/50 p-8">
+        <div className="mx-auto mt-14 max-w-3xl rounded-2xl border border-gw-border bg-gw-cream/50 p-6 sm:p-8">
           <h3 className="font-[family-name:var(--font-display)] text-xl font-semibold text-gw-teal-dark">
-            About our practice
+            Straight answers, then a plan
           </h3>
-          <p className="mt-3 text-sm leading-relaxed text-gw-muted">
-            Our team of highly trained professionals utilizes the latest healing
-            technologies to restore you to pain-free health quickly and safely. We
-            thoroughly evaluate and treat contributing root factors related to your
-            issue — including overall body condition, genetics, and postural habits.
-          </p>
-          <p className="mt-4 text-sm font-semibold text-gw-teal-dark">
-            {site.name} accepts most health insurance.
+          <p className="mt-3 text-sm leading-snug text-gw-muted sm:text-base">
+            We look at how you move, what hurts, and your history — then map next steps
+            (adjustments, PT, massage, imaging only when it fits). Most major insurance
+            accepted; same-day openings when the schedule allows.
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-4xl">
-          <h3 className="text-center font-[family-name:var(--font-display)] text-xl font-semibold text-gw-teal-dark">
-            Plans &amp; networks we often work with
+        <div className="mx-auto mt-14 max-w-4xl">
+          <h3 className="text-center font-[family-name:var(--font-display)] text-xl font-semibold text-gw-teal-dark sm:text-2xl">
+            Plans we see a lot
           </h3>
-          <p className="mx-auto mt-2 max-w-2xl text-center text-xs text-gw-muted">
-            Logos are for identification only. Benefits and participation vary by plan —
-            call <a href={site.phoneTel} className="text-gw-teal underline">{site.phone}</a>{" "}
-            or your carrier to confirm coverage.
+          <p className="mx-auto mt-2 max-w-xl text-center text-xs leading-snug text-gw-muted sm:text-sm">
+            Logos = common networks, not a guarantee. Your plan rules the final answer — call{" "}
+            <a href={site.phoneTel} className="font-medium text-gw-teal underline">
+              {site.phone}
+            </a>{" "}
+            or your carrier to verify.
           </p>
           <ul className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-8">
             {insuranceLogos.map((logo) => (
@@ -239,27 +200,35 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
+          <div className="mt-10 flex flex-col items-center gap-3 border-t border-gw-border pt-10">
+            <p className="text-center text-xs font-semibold uppercase tracking-wide text-gw-muted">
+              Veterans — Community Care
+            </p>
+            <VaCommunityCareBadge />
+          </div>
         </div>
       </section>
 
+      <HomeFinalCta />
+
       <section className="bg-gw-teal text-white">
-        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-16">
           <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div>
-              <h2 className="font-[family-name:var(--font-display)] text-3xl font-semibold">
-                Your health is our top priority
+              <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold sm:text-3xl">
+                Rather talk or text first?
               </h2>
-              <p className="mt-4 text-sm leading-relaxed text-white/90">
-                Request an appointment today — we are here to help with every issue you may
-                have.
+              <p className="mt-3 text-sm leading-snug text-white/90 sm:text-base">
+                Drop a message — we reply next business day. Hurting today? Skip the wait:
+                call <a href={site.phoneTel} className="font-semibold underline">{site.phone}</a>.
               </p>
-              <ul className="mt-6 space-y-2 text-sm">
+              <ul className="mt-6 space-y-1.5 text-sm text-white/95">
                 <li>{site.address.street}</li>
                 <li>
                   {site.address.city}, {site.address.state} {site.address.zip}
                 </li>
                 <li>
-                  <a href={site.phoneTel} className="font-semibold underline">
+                  <a href={site.phoneTel} className="text-base font-semibold underline">
                     {site.phone}
                   </a>
                 </li>
@@ -267,12 +236,27 @@ export default function HomePage() {
             </div>
             <AppointmentForm
               variant="consult"
-              heading="Consult with us"
-              intro="Have a medical question? Fill out the form and our staff will contact you by the end of the next working day."
+              heading="Send a quick note"
+              intro="What hurts, how long, and the best number to reach you. We answer within one business day — or call now for same-day options."
             />
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+function CheckIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+      <circle cx="12" cy="12" r="10" className="fill-gw-accent/25 stroke-gw-accent" strokeWidth="1.5" />
+      <path
+        className="stroke-gw-ink"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M8 12.5l2.5 2.5L16 9"
+      />
+    </svg>
   );
 }
